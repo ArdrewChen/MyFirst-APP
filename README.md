@@ -23,13 +23,13 @@ Android Studio
 
 #### 一些备注
 
-1. 出现错误:20 errorCode : 1 desc : VAD start: start error. mLastRecognitionResult.
-   **解决方案1**:在AndroidManifest文件application标签增加android:extractNativeLibs="true"(本项目采用).
-   **解决方案2**:或者build.gradle(:app)中minSdkVersion设置小一点低于23（例如21）.
-2. 出现提示:无法连接到服务端或接口.
-   **解决方案1**:检查一下你的百度语音识别的项目中的语音包名与自己要使用这个模块的项目名称是否一致,如本项目中语音包和项目名称都是com.example.summer3.
-   **解决方案2**:检查百度提供的AppID,APIKey,SecretKey与项目中的core的AndroidManifest.xml文件中的APP_ID、API_KEY、SECRET_KEY是否对应,同时检查是否添加了该有的权限.（未加权限可能导致APP闪退以及打开语音按钮时无反应，可在安卓手机端检查是否打开麦克风应用权限，有时候也可能因安卓端未给予麦克风应用权限，导致无法正常运行）
-   **解决方案3**:检查是否申领了百度提供的免费语音识别调用(最多可调用15万次).
+1. 出现错误:20 errorCode : 1 desc : VAD start: start error. mLastRecognitionResult.<br>
+   **解决方案1**:在AndroidManifest文件application标签增加android:extractNativeLibs="true"(本项目采用).<br>
+   **解决方案2**:或者build.gradle(:app)中minSdkVersion设置小一点低于23（例如21）.<br>
+2. 出现提示:无法连接到服务端或接口.<br>
+   **解决方案1**:检查一下你的百度语音识别的项目中的语音包名与自己要使用这个模块的项目名称是否一致,如本项目中语音包和项目名称都是com.example.summer3.<br>
+   **解决方案2**:检查百度提供的AppID,APIKey,SecretKey与项目中的core的AndroidManifest.xml文件中的APP_ID、API_KEY、SECRET_KEY是否对应,同时检查是否添加了该有的权限.（未加权限可能导致APP闪退以及打开语音按钮时无反应，可在安卓手机端检查是否打开麦克风应用权限，有时候也可能因安卓端未给予麦克风应用权限，导致无法正常运行）<br>
+   **解决方案3**:检查是否申领了百度提供的免费语音识别调用(最多可调用15万次).<br>
 
 ## 使用
 
@@ -40,8 +40,8 @@ Android Studio
 
 ## 设计思路
 
-设计思路大致为：首先获取输入框中输入的IP和端口，点击连接按钮后开启子线程进行连接，连接失败则提示连接失败提示框，连接成功则进行页面切换。在执行连接这个子线程中，让主线程休眠，以便让连接过程顺利从而导致判断连接的标志位发生改变。
-切换第二个页面后，利用Buddle对象将IP和端口数据传输进来，在onViewCreated中再次连接，然后五个按钮点击后分别在子线程中执行发送相应的字符串，点击语音按钮时，首先通过设置百度语音识别的json变量，设置为长识别（若要更改，参考[百度语音识别文档](https://cloud.baidu.com/doc/SPEECH/s/Pkgt4wwdx)对json变量进行修改即可），根据命令中是否含有“前”、“后”、“左”、“右”、“捡”来判断是否执行相关命令。再次点击，识别取消。
+设计思路大致为：首先获取输入框中输入的IP和端口，点击连接按钮后开启子线程进行连接，连接失败则提示连接失败提示框，连接成功则进行页面切换。在执行连接这个子线程中，让主线程休眠，以便让连接过程顺利从而导致判断连接的标志位发生改变。<br>
+切换第二个页面后，利用Buddle对象将IP和端口数据传输进来，在onViewCreated中再次连接，然后五个按钮点击后分别在子线程中执行发送相应的字符串，点击语音按钮时，首先通过设置百度语音识别的json变量，设置为长识别（若要更改，参考[百度语音识别文档](https://cloud.baidu.com/doc/SPEECH/s/Pkgt4wwdx)对json变量进行修改即可），根据命令中是否含有“前”、“后”、“左”、“右”、“捡”来判断是否执行相关命令。再次点击，识别取消。<br>
 
 ### 界面
 
